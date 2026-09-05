@@ -146,7 +146,64 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
 .side-stat-number { font-weight: 800; font-size: 1.6rem; color: var(--accent); line-height: 1; }
 .side-stat-label { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
 
-/* ================= Feed main column ================= */
+.navbar-search {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  flex: 1;
+  max-width: 380px;
+  margin: 0 auto;
+  transition: border-color 0.15s ease;
+}
+.navbar-search:focus-within { border-color: var(--accent); background: var(--surface); }
+.navbar-search-icon { color: var(--text-muted); }
+.navbar-search-input { font-size: 0.85rem; flex: 1; }
+.navbar-search-input input::placeholder { color: var(--text-muted); }
+@media (min-width: 760px) { .navbar-search { display: flex; } }
+
+.sidebar-create-btn {
+  margin-top: 14px !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 0 !important;
+  box-shadow: none !important;
+}
+.sidebar-create-btn:hover { background: var(--accent-hover) !important; }
+
+.stat-row { display: flex; gap: 18px; margin-top: 14px; }
+.stat-item { display: flex; flex-direction: column; }
+.stat-number { font-weight: 800; font-size: 1.15rem; color: var(--text); line-height: 1.1; }
+.stat-label { font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px; }
+
+.trending-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.trending-item { display: flex; justify-content: space-between; align-items: baseline; }
+.trending-tag { font-weight: 600; font-size: 0.85rem; color: var(--accent); }
+.trending-count { font-size: 0.76rem; color: var(--text-muted); }
+
+.member-list { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+.member-item { display: flex; align-items: center; gap: 10px; }
+.member-name { font-weight: 600; font-size: 0.83rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.member-handle { font-size: 0.74rem; color: var(--text-muted); }
+
+.filter-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.filter-chip {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+}
+.filter-chip--active { background: var(--accent) !important; color: #fff !important; border-color: var(--accent) !important; }
+
+.post-handle { font-size: 0.78rem; color: var(--text-muted); }
+
 .feed-main { min-width: 0; }
 
 .feed-heading { padding: 4px 2px 16px; }

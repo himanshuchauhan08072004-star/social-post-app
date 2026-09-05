@@ -16,3 +16,9 @@ export const addCommentRequest = (postId, text) =>
 
 export const deletePostRequest = (postId) =>
   api.delete(`/posts/${postId}`).then((r) => r.data);
+
+export const fetchStats = () => api.get("/posts/stats").then((r) => r.data);
+
+export const fetchTrending = () => api.get("/posts/trending").then((r) => r.data);
+
+export const fetchRecentUsers = () => api.get("/users/recent").then((r) => r.data);

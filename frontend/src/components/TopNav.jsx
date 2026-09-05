@@ -1,11 +1,11 @@
-import { AppBar, Toolbar, Typography, Avatar, IconButton, Box, Tooltip, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Avatar, IconButton, Box, Tooltip, InputBase } from "@mui/material";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { colorForName, initialsFor } from "../utils/avatarColor";
 
-const TopNav = () => {
+const TopNav = ({ searchValue, onSearchChange }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -25,13 +25,18 @@ const TopNav = () => {
           <Typography className="brand-name">Loop</Typography>
         </Box>
 
-        <Button
-          className="nav-home-link nav-home-link--active"
-          startIcon={<HomeRoundedIcon fontSize="small" />}
-          disableRipple
-        >
-          Home
-        </Button>
+        {typeof onSearchChange === "function" && (
+          <Box className="navbar-search">
+            <SearchRoundedIcon fontSize="small" className="navbar-search-icon" />
+            <InputBase
+              placeholder="Search posts or people…"
+              value={searchValue}
+              onChange={(e) => onSearchChange(e.target.value)}
+              inputProps={{ "aria-label": "Search posts or people" }}
+              className="navbar-search-input"
+            />
+          </Box>
+        )}
 
         {user && (
           <Box className="navbar-user">

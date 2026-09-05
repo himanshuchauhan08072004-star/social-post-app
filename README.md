@@ -79,6 +79,19 @@ npm run dev              # http://localhost:5173
 2. Add a database user + allow network access (0.0.0.0/0 for dev, or Render's IP for prod).
 3. Copy the connection string into `MONGODB_URI`. Database creates itself with `users` and `posts` collections on first write.
 
+## Seed Demo Data (optional but recommended)
+Populates the database with 16 demo users and 20 demo posts (mixed text/image, realistic embedded likes and comments) so the feed looks populated immediately.
+
+```bash
+cd backend
+npm run seed
+```
+
+- Skips seeding if the database already has users/posts. Add `--force` to wipe and reseed: `node src/seed.js --force`.
+- **Demo login:** any seeded email (e.g. `sarah.johnson@loopdemo.com`) with password `Demo@12345`.
+- These are development/demo accounts only — do not reuse this password anywhere real.
+- Demo post images are placeholder stock photos from picsum.photos, used only for local/demo purposes.
+
 ## Cloudinary Setup
 1. Create a free Cloudinary account.
 2. Copy Cloud Name, API Key, API Secret into backend `.env`.
@@ -96,6 +109,9 @@ npm run dev              # http://localhost:5173
 | POST | /api/posts/:id/like | Toggle like/unlike | Yes |
 | POST | /api/posts/:id/comments | Add comment | Yes |
 | GET | /api/posts/:id/comments | Get comments | Yes |
+| GET | /api/posts/stats | Real totals: posts, users, comments | Yes |
+| GET | /api/posts/trending | Top hashtags derived from post text | Yes |
+| GET | /api/users/recent | 5 most recently joined users | Yes |
 
 ## Deployment
 

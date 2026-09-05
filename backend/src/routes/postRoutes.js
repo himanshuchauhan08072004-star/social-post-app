@@ -7,11 +7,14 @@ import {
   addComment,
   getComments,
 } from "../controllers/postController.js";
+import { getStats, getTrending } from "../controllers/statsController.js";
 import { protect } from "../middleware/auth.js";
 import { upload } from "../utils/upload.js";
 
 const router = express.Router();
 
+router.get("/stats", protect, getStats);
+router.get("/trending", protect, getTrending);
 router.get("/", protect, getFeed);
 router.post("/", protect, upload.single("image"), createPost);
 router.delete("/:id", protect, deletePost);

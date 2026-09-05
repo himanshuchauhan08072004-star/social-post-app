@@ -1,9 +1,10 @@
-import { Box, Typography, Avatar, Divider } from "@mui/material";
+import { Box, Typography, Avatar, Divider, Button } from "@mui/material";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { useAuth } from "../context/AuthContext";
 import { colorForName, initialsFor } from "../utils/avatarColor";
 
-const LeftSidebar = () => {
+const LeftSidebar = ({ onCreatePost }) => {
   const { user } = useAuth();
   if (!user) return null;
 
@@ -25,6 +26,16 @@ const LeftSidebar = () => {
           <Typography className="side-user-email">{user.email}</Typography>
         </Box>
       </Box>
+
+      <Button
+        fullWidth
+        startIcon={<AddRoundedIcon />}
+        onClick={onCreatePost}
+        className="sidebar-create-btn"
+        disableElevation
+      >
+        Create Post
+      </Button>
     </Box>
   );
 };

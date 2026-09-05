@@ -7,7 +7,7 @@ import MoreHorizRoundedIcon from "@mui/icons-material/MoreHorizRounded";
 import { useAuth } from "../context/AuthContext";
 import { toggleLikeRequest, deletePostRequest } from "../services/postService";
 import CommentSection from "./CommentSection";
-import { colorForName, initialsFor } from "../utils/avatarColor";
+import { colorForName, initialsFor, handleFor } from "../utils/avatarColor";
 
 const timeAgo = (dateStr) => {
   const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
@@ -77,8 +77,11 @@ const PostCard = ({ post, onDeleted, onError }) => {
           {initialsFor(post.username)}
         </Avatar>
         <Box sx={{ flex: 1, minWidth: 0 }}>
-          <Typography className="post-username">{post.username}</Typography>
-          <Typography className="post-timestamp">{timeAgo(post.createdAt)}</Typography>
+          <Box sx={{ display: "flex", alignItems: "baseline", gap: 0.6, flexWrap: "wrap" }}>
+            <Typography className="post-username">{post.username}</Typography>
+            <Typography className="post-handle">{handleFor(post.username)}</Typography>
+          </Box>
+          <Typography className="post-timestamp">{timeAgo(post.createdAt)} · Public</Typography>
         </Box>
         {isOwner && (
           <>

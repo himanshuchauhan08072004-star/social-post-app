@@ -12,3 +12,6 @@ export const colorForName = (name = "?") => {
 };
 
 export const initialsFor = (name = "?") => (name.trim() ? name.trim().charAt(0).toUpperCase() : "?");
+
+export const handleFor = (name = "") =>
+  "@" + name.trim().toLowerCase().replace(/[^a-z0-9]+/g, ".").replace(/^\.+|\.+$/g, "");
