@@ -14,19 +14,20 @@ const DEMO_USERS = [
   "Neha Verma", "Arjun Patel", "Aisha Khan", "Daniel Wilson",
   "Emily Carter", "Rahul Singh", "Sofia Martin", "Michael Chen",
   "Ananya Gupta", "David Kim", "Olivia Brown", "Karan Malhotra",
+  "Ishita Rao", "James Anderson", "Meera Nair", "Thomas Baker",
 ];
 
 const emailFor = (name) => `${name.toLowerCase().replace(/[^a-z]+/g, ".")}@loopdemo.com`;
 const imageFor = (seed) => `https://picsum.photos/seed/${seed}/900/600`;
 
 const POSTS = [
-  { text: "Sunset views never get old! 🌅 Grateful for these beautiful moments. #sunset #nature", image: "sunset-1" },
+  { text: "Sunset views never get old. 🌅 Grateful for these beautiful moments. #sunset #nature", image: "sunset-1" },
   { text: "Coffee + Code = Perfect morning ☕💻 What's your productivity fuel? #coding #coffee", image: "workspace-1" },
-  { text: "Finally reached the top. The view was worth every step. #travel #mountains", image: "mountains-1" },
+  { text: "Finally made it to the mountains. Worth every step. 🏔️ #travel #mountains", image: "mountains-1" },
+  { text: "Clean workspace, clear mind. #workspace #technology", image: "workspace-2" },
   { text: "Small progress is still progress. 🚀 #fitness", image: null },
   { text: "Weekend photography walk through the city. #photography #city", image: "city-1" },
   { text: "Old books, new stories. Spent the afternoon at the library. #books", image: "books-1" },
-  { text: "Clean desk, clear mind. Setting up the new workstation. #workspace #technology", image: "workspace-2" },
   { text: "Nothing beats a home-cooked meal after a long week. #food", image: "food-1" },
   { text: "Rescued this little guy last month — he owns the house now. #pets", image: "pets-1" },
   { text: "Morning run through the park before the city wakes up. #fitness #lifestyle", image: "fitness-1" },
@@ -40,6 +41,11 @@ const POSTS = [
   { text: "Quiet mornings with a book and bad coffee are underrated. #books #coffee", image: "books-2" },
   { text: "Trail day. Legs are tired, mind is clear. #fitness #nature", image: "nature-1" },
   { text: "City lights from the rooftop tonight. #city #photography", image: "city-2" },
+  { text: "Sunrise hike beat the crowds today. Totally worth the 5am alarm. #nature #travel", image: "nature-2" },
+  { text: "New keyboard, same bugs. #coding #technology", image: "workspace-5" },
+  { text: "Found this little cafe tucked away downtown. #coffee #lifestyle", image: "food-3" },
+  { text: "Weekend project: finally organized the bookshelf. #books", image: "books-3" },
+  { text: "The dog insisted on a photoshoot today. #pets #lifestyle", image: "pets-2" },
 ];
 
 const COMMENT_TEXTS = [
@@ -71,19 +77,9 @@ const pickRandomDistinct = (arr, count) => {
 const run = async () => {
   await connectDB();
 
-  const existingUsers = await User.countDocuments();
-  const existingPosts = await Post.countDocuments();
-  if (existingUsers > 0 || existingPosts > 0) {
-    console.log(`Skipping seed: database already has ${existingUsers} users and ${existingPosts} posts.`);
-    console.log("Run with --force to wipe and reseed (drops only users/posts collections).");
-    if (!process.argv.includes("--force")) {
-      await mongoose.disconnect();
-      return;
-    }
-    await User.deleteMany({});
-    await Post.deleteMany({});
-    console.log("Existing users/posts cleared.");
-  }
+  console.log("Clearing existing users and posts (this seeder always resets demo data)...");
+  await User.deleteMany({});
+  await Post.deleteMany({});
 
   const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 10);
 
@@ -117,12 +113,16 @@ const run = async () => {
         text: COMMENT_TEXTS[randomInt(0, COMMENT_TEXTS.length - 1)],
         createdAt: new Date(Date.now() - randomInt(1, 5000) * 60 * 1000),
       })),
-      createdAt: new Date(Date.now() - (POSTS.length - i) * 45 * 60 * 1000),
+      createdAt: new Date(Date.now() - (POSTS.length - i) * 40 * 60 * 1000),
     });
   }
 
   await Post.insertMany(posts);
   console.log(`Seeded ${posts.length} demo posts with embedded likes/comments.`);
+
+  const finalUsers = await User.countDocuments();
+  const finalPosts = await Post.countDocuments();
+  console.log(`Verified in DB: ${finalUsers} users, ${finalPosts} posts.`);
 
   await mongoose.disconnect();
   console.log("Done.");

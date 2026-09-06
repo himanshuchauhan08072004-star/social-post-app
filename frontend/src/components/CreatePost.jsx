@@ -66,7 +66,7 @@ const CreatePost = ({ onPostCreated, onError, composerRef }) => {
       elevation={0}
     >
       <Box sx={{ display: "flex", gap: 1.5 }}>
-        <Avatar className="user-avatar" style={{ background: colorForName(user?.name) }}>
+        <Avatar className="user-avatar composer-avatar" style={{ background: colorForName(user?.name) }}>
           {initialsFor(user?.name)}
         </Avatar>
         <Box sx={{ flex: 1 }}>

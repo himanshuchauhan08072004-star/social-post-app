@@ -11,7 +11,9 @@ const RightSidebar = ({ refreshKey }) => {
   useEffect(() => {
     fetchStats().then(setStats).catch(() => {});
     fetchTrending().then((d) => setTrending(d.trending || [])).catch(() => {});
-    fetchRecentUsers().then((d) => setMembers(d.users || [])).catch(() => {});
+    fetchRecentUsers()
+      .then((d) => setMembers((d.users || []).filter((u) => u.name && u.name.trim())))
+      .catch(() => {});
   }, [refreshKey]);
 
   return (

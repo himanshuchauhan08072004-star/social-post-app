@@ -80,14 +80,14 @@ npm run dev              # http://localhost:5173
 3. Copy the connection string into `MONGODB_URI`. Database creates itself with `users` and `posts` collections on first write.
 
 ## Seed Demo Data (optional but recommended)
-Populates the database with 16 demo users and 20 demo posts (mixed text/image, realistic embedded likes and comments) so the feed looks populated immediately.
+Populates the database with 20 demo users and 25 demo posts (mixed text/image, realistic embedded likes and comments) so the feed looks populated immediately.
 
 ```bash
 cd backend
 npm run seed
 ```
 
-- Skips seeding if the database already has users/posts. Add `--force` to wipe and reseed: `node src/seed.js --force`.
+- **This always wipes and reseeds** the `users` and `posts` collections — it's a dev-only reset tool, not additive. Don't run it against data you want to keep.
 - **Demo login:** any seeded email (e.g. `sarah.johnson@loopdemo.com`) with password `Demo@12345`.
 - These are development/demo accounts only — do not reuse this password anywhere real.
 - Demo post images are placeholder stock photos from picsum.photos, used only for local/demo purposes.

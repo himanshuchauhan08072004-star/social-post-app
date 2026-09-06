@@ -14,7 +14,7 @@
   --radius-lg: 16px;
   --radius-md: 12px;
   --radius-sm: 8px;
-  --header-h: 56px;
+  --header-h: 68px;
   --shadow-card: 0 1px 2px rgba(20, 20, 35, 0.03), 0 1px 10px rgba(20, 20, 35, 0.035);
 }
 
@@ -34,7 +34,7 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
   box-shadow: none;
 }
 .navbar-inner {
-  max-width: 1240px;
+  max-width: 1320px;
   width: 100%;
   margin: 0 auto;
   min-height: var(--header-h) !important;
@@ -71,6 +71,11 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
   width: 32px !important;
   height: 32px !important;
 }
+.composer-avatar {
+  width: 44px !important;
+  height: 44px !important;
+  font-size: 1rem !important;
+}
 
 .logout-btn {
   border: 1px solid var(--border);
@@ -81,18 +86,18 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
 
 /* ================= App shell grid ================= */
 .app-shell {
-  max-width: 1240px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 24px 20px 40px;
+  padding: 24px 24px 40px;
   display: grid;
-  grid-template-columns: 232px minmax(0, 640px) 296px;
+  grid-template-columns: 240px minmax(0, 720px) 300px;
   gap: 24px;
   align-items: start;
   justify-content: center;
 }
 
-@media (max-width: 1180px) {
-  .app-shell { grid-template-columns: 220px minmax(0, 600px); }
+@media (max-width: 1240px) {
+  .app-shell { grid-template-columns: 220px minmax(0, 640px); }
   .right-sidebar { display: none; }
 }
 
