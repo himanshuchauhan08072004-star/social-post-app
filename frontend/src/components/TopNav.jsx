@@ -15,7 +15,7 @@ const TopNav = ({ searchValue, onSearchChange }) => {
   };
 
   return (
-    <AppBar position="sticky" elevation={0} className="app-navbar" component="header">
+    <AppBar position="sticky" elevation={0} color="transparent" className="app-navbar" component="header">
       <Toolbar className="navbar-inner" disableGutters>
         <Box className="brand" aria-label="Loop">
           <svg className="brand-mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
