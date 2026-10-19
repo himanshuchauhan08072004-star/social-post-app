@@ -125,13 +125,4 @@ npm run seed
 2. Build command: `npm run build`. Output dir: `dist`.
 3. Add `VITE_API_URL` = your deployed backend URL + `/api`.
 
-**Database:** MongoDB Atlas (see setup above).
-
-## Screenshots
-_Add screenshots here after running the app locally._
-
-## Demo URL
-_Add deployed frontend URL here._
-
-## GitHub Repository
-_Add repository link here._
+# Himanshu Chauhan
