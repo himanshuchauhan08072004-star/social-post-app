@@ -125,4 +125,5 @@ npm run seed
 2. Build command: `npm run build`. Output dir: `dist`.
 3. Add `VITE_API_URL` = your deployed backend URL + `/api`.
 
-# Himanshu Chauhan
+# Himanshu Chauhan - himanshuchauhan@08072004@gmail.com
+
